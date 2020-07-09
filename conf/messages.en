@@ -184,7 +184,47 @@ knownCountryOfResidency.heading = Known country of residency
 knownCountryOfResidency.checkYourAnswersLabel = Known country of residency
 knownCountryOfResidency.error.required = Select yes if you know the country of residency
 
-legallyIncapable.title = legallyIncapable
-legallyIncapable.heading = legallyIncapable
-legallyIncapable.checkYourAnswersLabel = legallyIncapable
-legallyIncapable.error.required = Select yes if legallyIncapable
+legallyIncapable.title = Legally Incapable?
+legallyIncapable.heading = Legally Incapable?
+legallyIncapable.checkYourAnswersLabel = Legally Incapable?
+legallyIncapable.error.required = Select yes if legally incapable
+
+charityName.title = Charity name
+charityName.heading = Charity name
+charityName.checkYourAnswersLabel = Charity name
+charityName.error.required = Enter charity name
+charityName.error.length = Charity name must be 100 characters or less
+
+companyName.title = Company name
+companyName.heading = Company name
+companyName.checkYourAnswersLabel = Company name
+companyName.error.required = Enter company name
+companyName.error.length = Company name must be 100 characters or less
+
+largeNumberName.title = Large number name
+largeNumberName.heading = Large number name
+largeNumberName.checkYourAnswersLabel = Large number name
+largeNumberName.error.required = Enter large number name
+largeNumberName.error.length = Large number name must be 100 characters or less
+
+numberOfBeneficiaries.title = Number of Beneficiaries in the class
+numberOfBeneficiaries.heading = Number of Beneficiaries in the class
+numberOfBeneficiaries.oneToOneHundred = 1 to 100
+numberOfBeneficiaries.oneHundredToTwoHundred = 101 to 200
+numberOfBeneficiaries.twoHundredToFiveHundred = 201 to 500
+numberOfBeneficiaries.fiveHundredToOneThousand = 501 to 1000
+numberOfBeneficiaries.overOneThousand = over 1,001
+numberOfBeneficiaries.checkYourAnswersLabel = Number of Beneficiaries in the class
+numberOfBeneficiaries.error.required = Select numberOfBeneficiaries
+
+trustName.title = Trust name
+trustName.heading = Trust name
+trustName.checkYourAnswersLabel = Trust name
+trustName.error.required = Enter the trusts name
+trustName.error.length = Trusts name must be 100 characters or less
+
+unidentifiedDescription.title = Unidentified class description
+unidentifiedDescription.heading = Unidentified class description
+unidentifiedDescription.checkYourAnswersLabel = Unidentified class description
+unidentifiedDescription.error.required = Enter Unidentified class description
+unidentifiedDescription.error.length = Unidentified class description must be 100 characters or less

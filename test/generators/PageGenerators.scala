@@ -5,6 +5,24 @@ import pages._
 
 trait PageGenerators {
 
+  implicit lazy val arbitraryUnidentifiedDescriptionPage: Arbitrary[UnidentifiedDescriptionPage.type] =
+    Arbitrary(UnidentifiedDescriptionPage)
+
+  implicit lazy val arbitraryTrustNamePage: Arbitrary[TrustNamePage.type] =
+    Arbitrary(TrustNamePage)
+
+  implicit lazy val arbitraryNumberOfBeneficiariesPage: Arbitrary[NumberOfBeneficiariesPage.type] =
+    Arbitrary(NumberOfBeneficiariesPage)
+
+  implicit lazy val arbitraryLargeNumberNamePage: Arbitrary[LargeNumberNamePage.type] =
+    Arbitrary(LargeNumberNamePage)
+
+  implicit lazy val arbitraryCompanyNamePage: Arbitrary[CompanyNamePage.type] =
+    Arbitrary(CompanyNamePage)
+
+  implicit lazy val arbitraryCharityNamePage: Arbitrary[CharityNamePage.type] =
+    Arbitrary(CharityNamePage)
+
   implicit lazy val arbitraryLegallyIncapablePage: Arbitrary[LegallyIncapablePage.type] =
     Arbitrary(LegallyIncapablePage)
 

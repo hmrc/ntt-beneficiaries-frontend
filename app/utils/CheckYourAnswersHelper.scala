@@ -29,6 +29,96 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
 
+  def unidentifiedDescription: Option[Row] = userAnswers.get(UnidentifiedDescriptionPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"unidentifiedDescription.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.UnidentifiedDescriptionController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"unidentifiedDescription.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def trustName: Option[Row] = userAnswers.get(TrustNamePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"trustName.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.TrustNameController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"trustName.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def numberOfBeneficiaries: Option[Row] = userAnswers.get(NumberOfBeneficiariesPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"numberOfBeneficiaries.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(msg"numberOfBeneficiaries.$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.NumberOfBeneficiariesController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"numberOfBeneficiaries.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def largeNumberName: Option[Row] = userAnswers.get(LargeNumberNamePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"largeNumberName.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.LargeNumberNameController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"largeNumberName.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def companyName: Option[Row] = userAnswers.get(CompanyNamePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"companyName.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.CompanyNameController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"companyName.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def charityName: Option[Row] = userAnswers.get(CharityNamePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"charityName.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.CharityNameController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"charityName.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   def legallyIncapable: Option[Row] = userAnswers.get(LegallyIncapablePage) map {
     answer =>
       Row(

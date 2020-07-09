@@ -8,6 +8,54 @@ import play.api.libs.json.{JsValue, Json}
 
 trait UserAnswersEntryGenerators extends PageGenerators with ModelGenerators {
 
+  implicit lazy val arbitraryUnidentifiedDescriptionUserAnswersEntry: Arbitrary[(UnidentifiedDescriptionPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[UnidentifiedDescriptionPage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryTrustNameUserAnswersEntry: Arbitrary[(TrustNamePage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[TrustNamePage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryNumberOfBeneficiariesUserAnswersEntry: Arbitrary[(NumberOfBeneficiariesPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[NumberOfBeneficiariesPage.type]
+        value <- arbitrary[NumberOfBeneficiaries].map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryLargeNumberNameUserAnswersEntry: Arbitrary[(LargeNumberNamePage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[LargeNumberNamePage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryCompanyNameUserAnswersEntry: Arbitrary[(CompanyNamePage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[CompanyNamePage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryCharityNameUserAnswersEntry: Arbitrary[(CharityNamePage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[CharityNamePage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
   implicit lazy val arbitraryLegallyIncapableUserAnswersEntry: Arbitrary[(LegallyIncapablePage.type, JsValue)] =
     Arbitrary {
       for {

@@ -58,3 +58,33 @@ GET        /legallyIncapable                        controllers.LegallyIncapable
 POST       /legallyIncapable                        controllers.LegallyIncapableController.onSubmit(mode: Mode = NormalMode)
 GET        /changeLegallyIncapable                  controllers.LegallyIncapableController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeLegallyIncapable                  controllers.LegallyIncapableController.onSubmit(mode: Mode = CheckMode)
+
+GET        /charityName                        controllers.CharityNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /charityName                        controllers.CharityNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCharityName                  controllers.CharityNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCharityName                  controllers.CharityNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /companyName                        controllers.CompanyNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /companyName                        controllers.CompanyNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCompanyName                  controllers.CompanyNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCompanyName                  controllers.CompanyNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /largeNumberName                        controllers.LargeNumberNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /largeNumberName                        controllers.LargeNumberNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeLargeNumberName                  controllers.LargeNumberNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeLargeNumberName                  controllers.LargeNumberNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /numberOfBeneficiaries                        controllers.NumberOfBeneficiariesController.onPageLoad(mode: Mode = NormalMode)
+POST       /numberOfBeneficiaries                        controllers.NumberOfBeneficiariesController.onSubmit(mode: Mode = NormalMode)
+GET        /changeNumberOfBeneficiaries                  controllers.NumberOfBeneficiariesController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeNumberOfBeneficiaries                  controllers.NumberOfBeneficiariesController.onSubmit(mode: Mode = CheckMode)
+
+GET        /trustName                        controllers.TrustNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /trustName                        controllers.TrustNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeTrustName                  controllers.TrustNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeTrustName                  controllers.TrustNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /unidentifiedDescription                        controllers.UnidentifiedDescriptionController.onPageLoad(mode: Mode = NormalMode)
+POST       /unidentifiedDescription                        controllers.UnidentifiedDescriptionController.onSubmit(mode: Mode = NormalMode)
+GET        /changeUnidentifiedDescription                  controllers.UnidentifiedDescriptionController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeUnidentifiedDescription                  controllers.UnidentifiedDescriptionController.onSubmit(mode: Mode = CheckMode)
