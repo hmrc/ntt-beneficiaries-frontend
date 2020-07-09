@@ -129,3 +129,35 @@ compliant.nine.p2.1=The service was built using parts that were tested by the
 compliant.nine.p2.2=Digital Accessibility Centre
 compliant.nine.p2.3=The full service was tested by HMRC and included disabled users.
 compliant.nine.p3=This page was prepared on [date when it was first published]. It was last updated on [date when it was last updated].
+
+typeOfBeneficiary.title = Type of Beneficiary
+typeOfBeneficiary.heading = Type of Beneficiary
+typeOfBeneficiary.individual = Individual
+typeOfBeneficiary.unidentified = Unidentified Class
+typeOfBeneficiary.charity = Charity
+typeOfBeneficiary.trust = Trust
+typeOfBeneficiary.company = Company
+typeOfBeneficiary.largeNumbers = Large Numbers
+typeOfBeneficiary.other = Other
+typeOfBeneficiary.checkYourAnswersLabel = Type of Beneficiary
+typeOfBeneficiary.error.required = Select typeOfBeneficiary
+
+dateOfBirth.title = Date of Birth
+dateOfBirth.heading = Date of Birth
+dateOfBirth.hint = For example, 12 11 2007
+dateOfBirth.checkYourAnswersLabel = Date Of Birth
+dateOfBirth.error.required.all = Enter the date of birth
+dateOfBirth.error.required.two = The date of birth must include {0} and {1}
+dateOfBirth.error.required = The date of birth must include {0}
+dateOfBirth.error.invalid = Enter a real date of birth
+
+individualsName.title = Individuals Name
+individualsName.heading = Individuals Name
+individualsName.checkYourAnswersLabel = Individuals Name
+individualsName.error.required = Enter the individuals name
+individualsName.error.length = Individuals Name must be 100 characters or less
+
+knownDateOfBirth.title = Date of Birth
+knownDateOfBirth.heading = Date of Birth
+knownDateOfBirth.checkYourAnswersLabel = knownDateOfBirth
+knownDateOfBirth.error.required = Select yes if knownDateOfBirth

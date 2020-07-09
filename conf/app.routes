@@ -13,3 +13,23 @@ GET        /check-your-answers                          controllers.CheckYourAns
 GET        /unauthorised                                controllers.UnauthorisedController.onPageLoad
 
 GET        /accessibility-statement                     controllers.AccessibilityController.onPageLoad
+
+GET        /typeOfBeneficiary                        controllers.TypeOfBeneficiaryController.onPageLoad(mode: Mode = NormalMode)
+POST       /typeOfBeneficiary                        controllers.TypeOfBeneficiaryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeTypeOfBeneficiary                  controllers.TypeOfBeneficiaryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeTypeOfBeneficiary                  controllers.TypeOfBeneficiaryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /dateOfBirth                  controllers.DateOfBirthController.onPageLoad(mode: Mode = NormalMode)
+POST       /dateOfBirth                  controllers.DateOfBirthController.onSubmit(mode: Mode = NormalMode)
+GET        /changeDateOfBirth                        controllers.DateOfBirthController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeDateOfBirth                        controllers.DateOfBirthController.onSubmit(mode: Mode = CheckMode)
+
+GET        /individualsName                        controllers.IndividualsNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /individualsName                        controllers.IndividualsNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeIndividualsName                  controllers.IndividualsNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeIndividualsName                  controllers.IndividualsNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownDateOfBirth                        controllers.KnownDateOfBirthController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownDateOfBirth                        controllers.KnownDateOfBirthController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownDateOfBirth                  controllers.KnownDateOfBirthController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownDateOfBirth                  controllers.KnownDateOfBirthController.onSubmit(mode: Mode = CheckMode)

@@ -29,6 +29,66 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
 
+  def knownDateOfBirth: Option[Row] = userAnswers.get(KnownDateOfBirthPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"knownDateOfBirth.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.KnownDateOfBirthController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"knownDateOfBirth.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def individualsName: Option[Row] = userAnswers.get(IndividualsNamePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"individualsName.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.IndividualsNameController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"individualsName.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def dateOfBirth: Option[Row] = userAnswers.get(DateOfBirthPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"dateOfBirth.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(Literal(answer.format(dateFormatter))),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.DateOfBirthController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"dateOfBirth.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def typeOfBeneficiary: Option[Row] = userAnswers.get(TypeOfBeneficiaryPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"typeOfBeneficiary.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(msg"typeOfBeneficiary.$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.TypeOfBeneficiaryController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"typeOfBeneficiary.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   private def yesOrNo(answer: Boolean): Content =
     if (answer) {
       msg"site.yes"
