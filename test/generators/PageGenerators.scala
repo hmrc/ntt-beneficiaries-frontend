@@ -5,6 +5,21 @@ import pages._
 
 trait PageGenerators {
 
+  implicit lazy val arbitraryLegallyIncapablePage: Arbitrary[LegallyIncapablePage.type] =
+    Arbitrary(LegallyIncapablePage)
+
+  implicit lazy val arbitraryKnownCountryOfResidencyPage: Arbitrary[KnownCountryOfResidencyPage.type] =
+    Arbitrary(KnownCountryOfResidencyPage)
+
+  implicit lazy val arbitraryKnownCountryOfNationalityPage: Arbitrary[KnownCountryOfNationalityPage.type] =
+    Arbitrary(KnownCountryOfNationalityPage)
+
+  implicit lazy val arbitraryCountryOfResidencyPage: Arbitrary[CountryOfResidencyPage.type] =
+    Arbitrary(CountryOfResidencyPage)
+
+  implicit lazy val arbitraryCountryOfNationalityPage: Arbitrary[CountryOfNationalityPage.type] =
+    Arbitrary(CountryOfNationalityPage)
+
   implicit lazy val arbitraryKnownDateOfBirthPage: Arbitrary[KnownDateOfBirthPage.type] =
     Arbitrary(KnownDateOfBirthPage)
 

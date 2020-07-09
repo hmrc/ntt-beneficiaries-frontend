@@ -161,3 +161,30 @@ knownDateOfBirth.title = Date of Birth
 knownDateOfBirth.heading = Date of Birth
 knownDateOfBirth.checkYourAnswersLabel = knownDateOfBirth
 knownDateOfBirth.error.required = Select yes if knownDateOfBirth
+
+countryOfNationality.title = Country of Nationality
+countryOfNationality.heading = Country of Nationality
+countryOfNationality.checkYourAnswersLabel = Country of Nationality
+countryOfNationality.error.required = Enter Country of Nationality
+countryOfNationality.error.length = Country of Nationality must be 100 characters or less
+
+countryOfResidency.title = Country of residency
+countryOfResidency.heading = Country of residency
+countryOfResidency.checkYourAnswersLabel = Country of residency
+countryOfResidency.error.required = Enter Country of residency
+countryOfResidency.error.length = Country of residency must be 100 characters or less
+
+knownCountryOfNationality.title = Known country of nationality
+knownCountryOfNationality.heading = Known country of nationality
+knownCountryOfNationality.checkYourAnswersLabel = Known country of nationality
+knownCountryOfNationality.error.required = Select yes if you know the country of nationality
+
+knownCountryOfResidency.title = Known country of residency
+knownCountryOfResidency.heading = Known country of residency
+knownCountryOfResidency.checkYourAnswersLabel = Known country of residency
+knownCountryOfResidency.error.required = Select yes if you know the country of residency
+
+legallyIncapable.title = legallyIncapable
+legallyIncapable.heading = legallyIncapable
+legallyIncapable.checkYourAnswersLabel = legallyIncapable
+legallyIncapable.error.required = Select yes if legallyIncapable

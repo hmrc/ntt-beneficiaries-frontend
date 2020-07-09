@@ -29,6 +29,81 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
 
+  def legallyIncapable: Option[Row] = userAnswers.get(LegallyIncapablePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"legallyIncapable.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.LegallyIncapableController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"legallyIncapable.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def knownCountryOfResidency: Option[Row] = userAnswers.get(KnownCountryOfResidencyPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"knownCountryOfResidency.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.KnownCountryOfResidencyController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"knownCountryOfResidency.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def knownCountryOfNationality: Option[Row] = userAnswers.get(KnownCountryOfNationalityPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"knownCountryOfNationality.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.KnownCountryOfNationalityController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"knownCountryOfNationality.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def countryOfResidency: Option[Row] = userAnswers.get(CountryOfResidencyPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"countryOfResidency.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.CountryOfResidencyController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"countryOfResidency.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def countryOfNationality: Option[Row] = userAnswers.get(CountryOfNationalityPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"countryOfNationality.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.CountryOfNationalityController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"countryOfNationality.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   def knownDateOfBirth: Option[Row] = userAnswers.get(KnownDateOfBirthPage) map {
     answer =>
       Row(

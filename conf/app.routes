@@ -33,3 +33,28 @@ GET        /knownDateOfBirth                        controllers.KnownDateOfBirth
 POST       /knownDateOfBirth                        controllers.KnownDateOfBirthController.onSubmit(mode: Mode = NormalMode)
 GET        /changeKnownDateOfBirth                  controllers.KnownDateOfBirthController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeKnownDateOfBirth                  controllers.KnownDateOfBirthController.onSubmit(mode: Mode = CheckMode)
+
+GET        /countryOfNationality                        controllers.CountryOfNationalityController.onPageLoad(mode: Mode = NormalMode)
+POST       /countryOfNationality                        controllers.CountryOfNationalityController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountryOfNationality                  controllers.CountryOfNationalityController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountryOfNationality                  controllers.CountryOfNationalityController.onSubmit(mode: Mode = CheckMode)
+
+GET        /countryOfResidency                        controllers.CountryOfResidencyController.onPageLoad(mode: Mode = NormalMode)
+POST       /countryOfResidency                        controllers.CountryOfResidencyController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountryOfResidency                  controllers.CountryOfResidencyController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountryOfResidency                  controllers.CountryOfResidencyController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownCountryOfNationality                        controllers.KnownCountryOfNationalityController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownCountryOfNationality                        controllers.KnownCountryOfNationalityController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownCountryOfNationality                  controllers.KnownCountryOfNationalityController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownCountryOfNationality                  controllers.KnownCountryOfNationalityController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownCountryOfResidency                        controllers.KnownCountryOfResidencyController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownCountryOfResidency                        controllers.KnownCountryOfResidencyController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownCountryOfResidency                  controllers.KnownCountryOfResidencyController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownCountryOfResidency                  controllers.KnownCountryOfResidencyController.onSubmit(mode: Mode = CheckMode)
+
+GET        /legallyIncapable                        controllers.LegallyIncapableController.onPageLoad(mode: Mode = NormalMode)
+POST       /legallyIncapable                        controllers.LegallyIncapableController.onSubmit(mode: Mode = NormalMode)
+GET        /changeLegallyIncapable                  controllers.LegallyIncapableController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeLegallyIncapable                  controllers.LegallyIncapableController.onSubmit(mode: Mode = CheckMode)
