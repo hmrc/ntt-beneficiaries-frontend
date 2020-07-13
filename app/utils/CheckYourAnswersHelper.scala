@@ -29,6 +29,81 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
 
+  def country: Option[Row] = userAnswers.get(CountryPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"country.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.CountryController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"country.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def whichCountry: Option[Row] = userAnswers.get(WhichCountryPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"whichCountry.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.WhichCountryController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"whichCountry.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def otherDescription: Option[Row] = userAnswers.get(OtherDescriptionPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"otherDescription.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.OtherDescriptionController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"otherDescription.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def description: Option[Row] = userAnswers.get(DescriptionPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"description.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.DescriptionController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"description.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def countryInUK: Option[Row] = userAnswers.get(CountryInUKPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"countryInUK.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.CountryInUKController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"countryInUK.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   def unidentifiedDescription: Option[Row] = userAnswers.get(UnidentifiedDescriptionPage) map {
     answer =>
       Row(

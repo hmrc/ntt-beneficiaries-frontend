@@ -5,6 +5,21 @@ import pages._
 
 trait PageGenerators {
 
+  implicit lazy val arbitraryCountryPage: Arbitrary[CountryPage.type] =
+    Arbitrary(CountryPage)
+
+  implicit lazy val arbitraryWhichCountryPage: Arbitrary[WhichCountryPage.type] =
+    Arbitrary(WhichCountryPage)
+
+  implicit lazy val arbitraryOtherDescriptionPage: Arbitrary[OtherDescriptionPage.type] =
+    Arbitrary(OtherDescriptionPage)
+
+  implicit lazy val arbitraryDescriptionPage: Arbitrary[DescriptionPage.type] =
+    Arbitrary(DescriptionPage)
+
+  implicit lazy val arbitraryCountryInUKPage: Arbitrary[CountryInUKPage.type] =
+    Arbitrary(CountryInUKPage)
+
   implicit lazy val arbitraryUnidentifiedDescriptionPage: Arbitrary[UnidentifiedDescriptionPage.type] =
     Arbitrary(UnidentifiedDescriptionPage)
 

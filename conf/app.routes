@@ -88,3 +88,28 @@ GET        /unidentifiedDescription                        controllers.Unidentif
 POST       /unidentifiedDescription                        controllers.UnidentifiedDescriptionController.onSubmit(mode: Mode = NormalMode)
 GET        /changeUnidentifiedDescription                  controllers.UnidentifiedDescriptionController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeUnidentifiedDescription                  controllers.UnidentifiedDescriptionController.onSubmit(mode: Mode = CheckMode)
+
+GET        /countryInUK                        controllers.CountryInUKController.onPageLoad(mode: Mode = NormalMode)
+POST       /countryInUK                        controllers.CountryInUKController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountryInUK                  controllers.CountryInUKController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountryInUK                  controllers.CountryInUKController.onSubmit(mode: Mode = CheckMode)
+
+GET        /description                        controllers.DescriptionController.onPageLoad(mode: Mode = NormalMode)
+POST       /description                        controllers.DescriptionController.onSubmit(mode: Mode = NormalMode)
+GET        /changeDescription                  controllers.DescriptionController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeDescription                  controllers.DescriptionController.onSubmit(mode: Mode = CheckMode)
+
+GET        /otherDescription                        controllers.OtherDescriptionController.onPageLoad(mode: Mode = NormalMode)
+POST       /otherDescription                        controllers.OtherDescriptionController.onSubmit(mode: Mode = NormalMode)
+GET        /changeOtherDescription                  controllers.OtherDescriptionController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeOtherDescription                  controllers.OtherDescriptionController.onSubmit(mode: Mode = CheckMode)
+
+GET        /whichCountry                        controllers.WhichCountryController.onPageLoad(mode: Mode = NormalMode)
+POST       /whichCountry                        controllers.WhichCountryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeWhichCountry                  controllers.WhichCountryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeWhichCountry                  controllers.WhichCountryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /country                        controllers.CountryController.onPageLoad(mode: Mode = NormalMode)
+POST       /country                        controllers.CountryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountry                  controllers.CountryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountry                  controllers.CountryController.onSubmit(mode: Mode = CheckMode)

@@ -28,6 +28,26 @@ class Navigator @Inject()() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
     case _ => _ => routes.IndexController.onPageLoad()
+    case TypeOfBeneficiaryPage => _ => routes.IndividualsNameController.onPageLoad(NormalMode)
+    case IndividualsNamePage => _ => routes.KnownDateOfBirthController.onPageLoad(NormalMode)
+    case KnownDateOfBirthPage => _ => routes.DateOfBirthController.onPageLoad(NormalMode)
+    case DateOfBirthPage => _ => routes.KnownCountryOfNationalityController.onPageLoad(NormalMode)
+    case KnownCountryOfNationalityPage => _ => routes.CountryOfNationalityController.onPageLoad(NormalMode)
+    case CountryOfNationalityPage => _ => routes.KnownCountryOfResidencyController.onPageLoad(NormalMode)
+    case KnownCountryOfResidencyPage => _ => routes.CountryOfResidencyController.onPageLoad(NormalMode)
+    case CountryOfResidencyPage => _ => routes.LegallyIncapableController.onPageLoad(NormalMode)
+    case LegallyIncapablePage => _ => routes.UnidentifiedDescriptionController.onPageLoad(NormalMode)
+    case UnidentifiedDescriptionPage => _ => routes.CharityNameController.onPageLoad(NormalMode)
+    case CharityNamePage => _ => routes.TrustNameController.onPageLoad(NormalMode)
+    case TrustNamePage => _ => routes.CompanyNameController.onPageLoad(NormalMode)
+    case CompanyNamePage => _ => routes.LargeNumberNameController.onPageLoad(NormalMode)
+    case LargeNumberNamePage => _ => routes.NumberOfBeneficiariesController.onPageLoad(NormalMode)
+    case NumberOfBeneficiariesPage => _ => routes.DescriptionController.onPageLoad(NormalMode)
+    case DescriptionPage => _ => routes.OtherDescriptionController.onPageLoad(NormalMode)
+    case OtherDescriptionPage => _ => routes.WhichCountryController.onPageLoad(NormalMode)
+    case WhichCountryPage => _ => routes.CountryInUKController.onPageLoad(NormalMode)
+    case CountryInUKPage => _ => routes.CountryController.onPageLoad(NormalMode)
+    case CountryPage => _ => routes.CheckYourAnswersController.onPageLoad()
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {

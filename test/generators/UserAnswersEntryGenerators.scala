@@ -8,6 +8,46 @@ import play.api.libs.json.{JsValue, Json}
 
 trait UserAnswersEntryGenerators extends PageGenerators with ModelGenerators {
 
+  implicit lazy val arbitraryCountryUserAnswersEntry: Arbitrary[(CountryPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[CountryPage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryWhichCountryUserAnswersEntry: Arbitrary[(WhichCountryPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[WhichCountryPage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryOtherDescriptionUserAnswersEntry: Arbitrary[(OtherDescriptionPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[OtherDescriptionPage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryDescriptionUserAnswersEntry: Arbitrary[(DescriptionPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[DescriptionPage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryCountryInUKUserAnswersEntry: Arbitrary[(CountryInUKPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[CountryInUKPage.type]
+        value <- arbitrary[Boolean].map(Json.toJson(_))
+      } yield (page, value)
+    }
+
   implicit lazy val arbitraryUnidentifiedDescriptionUserAnswersEntry: Arbitrary[(UnidentifiedDescriptionPage.type, JsValue)] =
     Arbitrary {
       for {

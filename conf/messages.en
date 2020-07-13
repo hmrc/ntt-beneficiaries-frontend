@@ -228,3 +228,32 @@ unidentifiedDescription.heading = Unidentified class description
 unidentifiedDescription.checkYourAnswersLabel = Unidentified class description
 unidentifiedDescription.error.required = Enter Unidentified class description
 unidentifiedDescription.error.length = Unidentified class description must be 100 characters or less
+
+countryInUK.title = Is the country in the UK?
+countryInUK.heading = Is the country in the UK?
+countryInUK.checkYourAnswersLabel = Is the country in the UK?
+countryInUK.error.required = Select yes if countryInUK
+
+description.title = Description
+description.heading = Description
+description.checkYourAnswersLabel = Description
+description.error.required = Enter description
+description.error.length = Description must be 70 characters or less
+
+otherDescription.title = Other description
+otherDescription.heading = Other description
+otherDescription.checkYourAnswersLabel = Other description
+otherDescription.error.required = Enter the other description
+otherDescription.error.length = Other description must be 100 characters or less
+
+whichCountry.title = Which country
+whichCountry.heading = Which country
+whichCountry.checkYourAnswersLabel = Which country
+whichCountry.error.required = Enter which country
+whichCountry.error.length = Which country must be 100 characters or less
+
+country.title = country
+country.heading = country
+country.checkYourAnswersLabel = country
+country.error.required = Enter country
+country.error.length = Country must be 100 characters or less
