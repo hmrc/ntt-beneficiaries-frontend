@@ -46,10 +46,10 @@ class TypeOfBeneficiaryController @Inject()(
 
   private val form = formProvider()
 
-  def onPageLoad(mode: Mode): Action[AnyContent] = (identify andThen getData).async {
+  def onPageLoad(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
     implicit request =>
 
-      val preparedForm = request.userAnswers.getOrElse(UserAnswers(request.internalId)).get(TypeOfBeneficiaryPage) match {
+      val preparedForm = request.userAnswers.get(TypeOfBeneficiaryPage) match {
         case None => form
         case Some(value) => form.fill(value)
       }
@@ -63,7 +63,7 @@ class TypeOfBeneficiaryController @Inject()(
       renderer.render("typeOfBeneficiary.njk", json).map(Ok(_))
   }
 
-  def onSubmit(mode: Mode): Action[AnyContent] = (identify andThen getData).async {
+  def onSubmit(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
     implicit request =>
 
       form.bindFromRequest().fold(
@@ -79,7 +79,7 @@ class TypeOfBeneficiaryController @Inject()(
         },
         value =>
           for {
-            updatedAnswers <- Future.fromTry(request.userAnswers.getOrElse(UserAnswers(request.internalId)).set(TypeOfBeneficiaryPage, value))
+            updatedAnswers <- Future.fromTry(request.userAnswers.set(TypeOfBeneficiaryPage, value))
             _              <- sessionRepository.set(updatedAnswers)
           } yield Redirect(navigator.nextPage(TypeOfBeneficiaryPage, mode, updatedAnswers))
       )

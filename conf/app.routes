@@ -1,7 +1,5 @@
 # microservice specific routes
 
-GET        /                                            controllers.IndexController.onPageLoad
-
 GET        /assets/*file                                controllers.Assets.versioned(path="/public", file: Asset)
 
 GET        /language/:lang                              controllers.LanguageSwitchController.switchToLanguage(lang: String)
@@ -115,4 +113,5 @@ POST       /knownCountry                        controllers.KnownCountryControll
 GET        /changeKnownCountry                  controllers.KnownCountryController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeKnownCountry                  controllers.KnownCountryController.onSubmit(mode: Mode = CheckMode)
 
-GET        /interruptInfo                       controllers.InterruptInfoController.onPageLoad()
+GET        /interruptInfo                       controllers.InterruptInfoController.onPageLoad(mode: Mode = NormalMode)
+POST       /interruptInfo                       controllers.InterruptInfoController.onSubmit(mode: Mode = NormalMode)
