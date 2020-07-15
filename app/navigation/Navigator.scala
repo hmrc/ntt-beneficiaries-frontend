@@ -27,7 +27,7 @@ import models._
 class Navigator @Inject()() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
-    case _ => _ => routes.IndexController.onPageLoad()
+    case StartJourneyPage              => _ => routes.TypeOfBeneficiaryController.onPageLoad(NormalMode)
     case TypeOfBeneficiaryPage         => _ => routes.IndividualsNameController.onPageLoad(NormalMode)
     case IndividualsNamePage           => _ => routes.KnownDateOfBirthController.onPageLoad(NormalMode)
     case KnownDateOfBirthPage          => _ => routes.DateOfBirthController.onPageLoad(NormalMode)

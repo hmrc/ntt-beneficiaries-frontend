@@ -19,7 +19,7 @@ package controllers
 import controllers.actions._
 import forms.TypeOfBeneficiaryFormProvider
 import javax.inject.Inject
-import models.{Mode, TypeOfBeneficiary}
+import models.{Mode, TypeOfBeneficiary, UserAnswers}
 import navigation.Navigator
 import pages.TypeOfBeneficiaryPage
 import play.api.i18n.{I18nSupport, MessagesApi}
@@ -46,10 +46,10 @@ class TypeOfBeneficiaryController @Inject()(
 
   private val form = formProvider()
 
-  def onPageLoad(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
+  def onPageLoad(mode: Mode): Action[AnyContent] = (identify andThen getData).async {
     implicit request =>
 
-      val preparedForm = request.userAnswers.get(TypeOfBeneficiaryPage) match {
+      val preparedForm = request.userAnswers.getOrElse(UserAnswers(request.internalId)).get(TypeOfBeneficiaryPage) match {
         case None => form
         case Some(value) => form.fill(value)
       }
@@ -63,7 +63,7 @@ class TypeOfBeneficiaryController @Inject()(
       renderer.render("typeOfBeneficiary.njk", json).map(Ok(_))
   }
 
-  def onSubmit(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
+  def onSubmit(mode: Mode): Action[AnyContent] = (identify andThen getData).async {
     implicit request =>
 
       form.bindFromRequest().fold(
@@ -79,7 +79,7 @@ class TypeOfBeneficiaryController @Inject()(
         },
         value =>
           for {
-            updatedAnswers <- Future.fromTry(request.userAnswers.set(TypeOfBeneficiaryPage, value))
+            updatedAnswers <- Future.fromTry(request.userAnswers.getOrElse(UserAnswers(request.internalId)).set(TypeOfBeneficiaryPage, value))
             _              <- sessionRepository.set(updatedAnswers)
           } yield Redirect(navigator.nextPage(TypeOfBeneficiaryPage, mode, updatedAnswers))
       )

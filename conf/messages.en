@@ -157,9 +157,9 @@ individualsName.checkYourAnswersLabel = Individuals Name
 individualsName.error.required = Enter the individuals name
 individualsName.error.length = Individuals Name must be 100 characters or less
 
-knownDateOfBirth.title = Date of Birth
-knownDateOfBirth.heading = Date of Birth
-knownDateOfBirth.checkYourAnswersLabel = knownDateOfBirth
+knownDateOfBirth.title = Do you know your date of birth
+knownDateOfBirth.heading = Do you know your date of birth
+knownDateOfBirth.checkYourAnswersLabel = Do you know your date of birth
 knownDateOfBirth.error.required = Select yes if knownDateOfBirth
 
 countryOfNationality.title = Country of Nationality

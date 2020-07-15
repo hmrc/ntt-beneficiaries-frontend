@@ -31,7 +31,7 @@ object TypeOfBeneficiary extends Enumerable.Implicits {
   case object Trust extends WithName("trust") with TypeOfBeneficiary
   case object Company extends WithName("company") with TypeOfBeneficiary
   case object LargeNumbers extends WithName("largeNumbers") with TypeOfBeneficiary
-  case object Others extends WithName("others") with TypeOfBeneficiary
+  case object Other extends WithName("other") with TypeOfBeneficiary
 
   val values: Seq[TypeOfBeneficiary] = Seq(
     Individual,
@@ -48,7 +48,7 @@ object TypeOfBeneficiary extends Enumerable.Implicits {
       Radios.Radio(msg"typeOfBeneficiary.trust", Unidentified.toString),
       Radios.Radio(msg"typeOfBeneficiary.company", Unidentified.toString),
       Radios.Radio(msg"typeOfBeneficiary.largeNumbers", Unidentified.toString),
-      Radios.Radio(msg"typeOfBeneficiary.others", Unidentified.toString)
+      Radios.Radio(msg"typeOfBeneficiary.other", Unidentified.toString)
     )
 
     Radios(field, items)
