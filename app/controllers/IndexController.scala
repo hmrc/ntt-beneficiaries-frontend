@@ -20,6 +20,7 @@ import controllers.actions.{DataRequiredAction, DataRetrievalAction, IdentifierA
 import javax.inject.Inject
 import models.{NormalMode, UserAnswers}
 import navigation.Navigator
+import pages.StartJourneyPage
 import play.api.i18n.I18nSupport
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import renderer.Renderer
@@ -35,10 +36,18 @@ class IndexController @Inject()(
     renderer: Renderer,
     identify: IdentifierAction,
     getData: DataRetrievalAction,
-    requireData: DataRequiredAction,
+    requireData: DataRequiredAction
 )(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport {
 
   def onPageLoad: Action[AnyContent] = (identify andThen getData).async {
     implicit request => renderer.render("index.njk").map(Ok(_))
+  }
+
+  def onSubmit: Action[AnyContent] = (identify andThen getData).async {
+    implicit request =>
+      val answers = UserAnswers(request.internalId)
+      for {
+        _ <- sessionRepository.set(answers)
+      } yield Redirect(navigator.nextPage(StartJourneyPage, NormalMode, answers))
   }
 }

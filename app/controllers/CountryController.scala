@@ -27,36 +27,41 @@ import play.api.libs.json.Json
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import renderer.Renderer
 import repositories.SessionRepository
+import services.CountryService
 import uk.gov.hmrc.play.bootstrap.controller.FrontendBaseController
 import uk.gov.hmrc.viewmodels.NunjucksSupport
 
 import scala.concurrent.{ExecutionContext, Future}
 
 class CountryController @Inject()(
-    override val messagesApi: MessagesApi,
-    sessionRepository: SessionRepository,
-    navigator: Navigator,
-    identify: IdentifierAction,
-    getData: DataRetrievalAction,
-    requireData: DataRequiredAction,
-    formProvider: CountryFormProvider,
-    val controllerComponents: MessagesControllerComponents,
-    renderer: Renderer
-)(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport with NunjucksSupport {
+                                  override val messagesApi: MessagesApi,
+                                  sessionRepository: SessionRepository,
+                                  navigator: Navigator,
+                                  identify: IdentifierAction,
+                                  getData: DataRetrievalAction,
+                                  requireData: DataRequiredAction,
+                                  formProvider: CountryFormProvider,
+                                  val controllerComponents: MessagesControllerComponents,
+                                  renderer: Renderer,
+                                  override val countryService: CountryService
+)(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport with NunjucksSupport with CountryLookup {
 
   private val form = formProvider()
 
   def onPageLoad(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
     implicit request =>
 
-      val preparedForm = request.userAnswers.get(CountryPage) match {
+      val existingAnswer = request.userAnswers.get(CountryPage)
+
+      val preparedForm = existingAnswer match {
         case None => form
         case Some(value) => form.fill(value)
       }
 
       val json = Json.obj(
         "form" -> preparedForm,
-        "mode" -> mode
+        "mode" -> mode,
+        "countries" -> countries(messages = request2Messages(request), selected = existingAnswer)
       )
 
       renderer.render("country.njk", json).map(Ok(_))
@@ -70,7 +75,8 @@ class CountryController @Inject()(
 
           val json = Json.obj(
             "form" -> formWithErrors,
-            "mode" -> mode
+            "mode" -> mode,
+            "countries" -> countries(messages = request2Messages(request))
           )
 
           renderer.render("country.njk", json).map(BadRequest(_))
