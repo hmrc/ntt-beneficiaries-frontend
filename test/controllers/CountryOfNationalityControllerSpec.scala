@@ -44,7 +44,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
   val formProvider = new CountryOfNationalityFormProvider()
   val form = formProvider()
 
-  lazy val whatIsTheirCountryOfNationalityRoute = routes.CountryOfNationalityController.onPageLoad(NormalMode).url
+  lazy val countryOfNationalityRoute = routes.CountryOfNationalityController.onPageLoad(NormalMode).url
 
   "WhatIsTheirCountryOfNationality Controller" - {
 
@@ -54,7 +54,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
         .thenReturn(Future.successful(Html("")))
 
       val application = applicationBuilder(userAnswers = Some(emptyUserAnswers)).build()
-      val request = FakeRequest(GET, whatIsTheirCountryOfNationalityRoute)
+      val request = FakeRequest(GET, countryOfNationalityRoute)
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
       val jsonCaptor = ArgumentCaptor.forClass(classOf[JsObject])
 
@@ -69,7 +69,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
         "mode" -> NormalMode
       )
 
-      templateCaptor.getValue mustEqual "whatIsTheirCountryOfNationality.njk"
+      templateCaptor.getValue mustEqual "countryOfNationality.njk"
       jsonCaptor.getValue must containJson(expectedJson)
 
       application.stop()
@@ -82,7 +82,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
 
       val userAnswers = UserAnswers(userAnswersId).set(CountryOfNationalityPage, "answer").success.value
       val application = applicationBuilder(userAnswers = Some(userAnswers)).build()
-      val request = FakeRequest(GET, whatIsTheirCountryOfNationalityRoute)
+      val request = FakeRequest(GET, countryOfNationalityRoute)
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
       val jsonCaptor = ArgumentCaptor.forClass(classOf[JsObject])
 
@@ -99,7 +99,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
         "mode" -> NormalMode
       )
 
-      templateCaptor.getValue mustEqual "whatIsTheirCountryOfNationality.njk"
+      templateCaptor.getValue mustEqual "countryOfNationality.njk"
       jsonCaptor.getValue must containJson(expectedJson)
 
       application.stop()
@@ -120,7 +120,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
           .build()
 
       val request =
-        FakeRequest(POST, whatIsTheirCountryOfNationalityRoute)
+        FakeRequest(POST, countryOfNationalityRoute)
           .withFormUrlEncodedBody(("value", "answer"))
 
       val result = route(application, request).value
@@ -137,7 +137,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
         .thenReturn(Future.successful(Html("")))
 
       val application = applicationBuilder(userAnswers = Some(emptyUserAnswers)).build()
-      val request = FakeRequest(POST, whatIsTheirCountryOfNationalityRoute).withFormUrlEncodedBody(("value", ""))
+      val request = FakeRequest(POST, countryOfNationalityRoute).withFormUrlEncodedBody(("value", ""))
       val boundForm = form.bind(Map("value" -> ""))
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
       val jsonCaptor = ArgumentCaptor.forClass(classOf[JsObject])
@@ -153,7 +153,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
         "mode" -> NormalMode
       )
 
-      templateCaptor.getValue mustEqual "whatIsTheirCountryOfNationality.njk"
+      templateCaptor.getValue mustEqual "countryOfNationality.njk"
       jsonCaptor.getValue must containJson(expectedJson)
 
       application.stop()
@@ -163,7 +163,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
 
       val application = applicationBuilder(userAnswers = None).build()
 
-      val request = FakeRequest(GET, whatIsTheirCountryOfNationalityRoute)
+      val request = FakeRequest(GET, countryOfNationalityRoute)
 
       val result = route(application, request).value
 
@@ -179,7 +179,7 @@ class CountryOfNationalityControllerSpec extends SpecBase with MockitoSugar with
       val application = applicationBuilder(userAnswers = None).build()
 
       val request =
-        FakeRequest(POST, whatIsTheirCountryOfNationalityRoute)
+        FakeRequest(POST, countryOfNationalityRoute)
           .withFormUrlEncodedBody(("value", "answer"))
 
       val result = route(application, request).value

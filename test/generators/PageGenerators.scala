@@ -27,9 +27,6 @@ trait PageGenerators {
   implicit lazy val arbitraryCountryPage: Arbitrary[CountryPage.type] =
     Arbitrary(CountryPage)
 
-  implicit lazy val arbitraryWhichCountryPage: Arbitrary[WhichCountryPage.type] =
-    Arbitrary(WhichCountryPage)
-
   implicit lazy val arbitraryOtherDescriptionPage: Arbitrary[OtherDescriptionPage.type] =
     Arbitrary(OtherDescriptionPage)
 
