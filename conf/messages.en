@@ -257,3 +257,11 @@ country.heading = country
 country.checkYourAnswersLabel = country
 country.error.required = Enter country
 country.error.length = Country must be 100 characters or less
+
+knownCountry.title = knownCountry
+knownCountry.heading = knownCountry
+knownCountry.checkYourAnswersLabel = knownCountry
+knownCountry.error.required = Select yes if knownCountry
+
+interruptInfo.title = interruptInfo
+interruptInfo.heading = interruptInfo

@@ -104,12 +104,15 @@ POST       /otherDescription                        controllers.OtherDescription
 GET        /changeOtherDescription                  controllers.OtherDescriptionController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeOtherDescription                  controllers.OtherDescriptionController.onSubmit(mode: Mode = CheckMode)
 
-GET        /whichCountry                        controllers.WhichCountryController.onPageLoad(mode: Mode = NormalMode)
-POST       /whichCountry                        controllers.WhichCountryController.onSubmit(mode: Mode = NormalMode)
-GET        /changeWhichCountry                  controllers.WhichCountryController.onPageLoad(mode: Mode = CheckMode)
-POST       /changeWhichCountry                  controllers.WhichCountryController.onSubmit(mode: Mode = CheckMode)
 
 GET        /country                        controllers.CountryController.onPageLoad(mode: Mode = NormalMode)
 POST       /country                        controllers.CountryController.onSubmit(mode: Mode = NormalMode)
 GET        /changeCountry                  controllers.CountryController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeCountry                  controllers.CountryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownCountry                        controllers.KnownCountryController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownCountry                        controllers.KnownCountryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownCountry                  controllers.KnownCountryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownCountry                  controllers.KnownCountryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /interruptInfo                       controllers.InterruptInfoController.onPageLoad()

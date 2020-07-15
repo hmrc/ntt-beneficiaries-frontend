@@ -21,11 +21,10 @@ import javax.inject.Inject
 import forms.mappings.Mappings
 import play.api.data.Form
 
-class WhichCountryFormProvider @Inject() extends Mappings {
+class KnownCountryFormProvider @Inject() extends Mappings {
 
-  def apply(): Form[String] =
+  def apply(): Form[Boolean] =
     Form(
-      "value" -> text("whichCountry.error.required")
-        .verifying(maxLength(100, "whichCountry.error.length"))
+      "value" -> boolean("knownCountry.error.required")
     )
 }

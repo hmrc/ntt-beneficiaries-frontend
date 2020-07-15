@@ -23,37 +23,41 @@ import models.{CheckMode, UserAnswers}
 import pages._
 import play.api.i18n.Messages
 import CheckYourAnswersHelper._
+import services.CountryService
 import uk.gov.hmrc.viewmodels._
 import uk.gov.hmrc.viewmodels.SummaryList._
 import uk.gov.hmrc.viewmodels.Text.Literal
 
-class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
+class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountryService)(implicit messages: Messages) {
 
-  def country: Option[Row] = userAnswers.get(CountryPage) map {
+  private def country(code: String): Content =
+    lit"${countryService.getCountryByCode(code).getOrElse("")}"
+
+  def knownCountry: Option[Row] = userAnswers.get(KnownCountryPage) map {
     answer =>
       Row(
-        key     = Key(msg"country.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
-        value   = Value(lit"$answer"),
+        key     = Key(msg"knownCountry.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
         actions = List(
           Action(
             content            = msg"site.edit",
-            href               = routes.CountryController.onPageLoad(CheckMode).url,
-            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"country.checkYourAnswersLabel"))
+            href               = routes.KnownCountryController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"knownCountry.checkYourAnswersLabel"))
           )
         )
       )
   }
 
-  def whichCountry: Option[Row] = userAnswers.get(WhichCountryPage) map {
+  def country: Option[Row] = userAnswers.get(CountryPage) map {
     answer =>
       Row(
-        key     = Key(msg"whichCountry.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
-        value   = Value(lit"$answer"),
+        key     = Key(msg"country.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(country(answer)),
         actions = List(
           Action(
             content            = msg"site.edit",
-            href               = routes.WhichCountryController.onPageLoad(CheckMode).url,
-            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"whichCountry.checkYourAnswersLabel"))
+            href               = routes.CountryController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"country.checkYourAnswersLabel"))
           )
         )
       )
@@ -243,7 +247,7 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messag
     answer =>
       Row(
         key     = Key(msg"countryOfResidency.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
-        value   = Value(lit"$answer"),
+        value   = Value(country(answer)),
         actions = List(
           Action(
             content            = msg"site.edit",
@@ -258,7 +262,7 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messag
     answer =>
       Row(
         key     = Key(msg"countryOfNationality.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
-        value   = Value(lit"$answer"),
+        value   = Value(country(answer)),
         actions = List(
           Action(
             content            = msg"site.edit",

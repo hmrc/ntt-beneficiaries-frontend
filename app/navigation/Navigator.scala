@@ -27,7 +27,7 @@ import models._
 class Navigator @Inject()() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
-    case StartJourneyPage              => _ => routes.TypeOfBeneficiaryController.onPageLoad(NormalMode)
+    case InterruptInfoPage             => _ => routes.TypeOfBeneficiaryController.onPageLoad(NormalMode)
     case TypeOfBeneficiaryPage         => _ => routes.IndividualsNameController.onPageLoad(NormalMode)
     case IndividualsNamePage           => _ => routes.KnownDateOfBirthController.onPageLoad(NormalMode)
     case KnownDateOfBirthPage          => _ => routes.DateOfBirthController.onPageLoad(NormalMode)
@@ -44,8 +44,8 @@ class Navigator @Inject()() {
     case LargeNumberNamePage           => _ => routes.NumberOfBeneficiariesController.onPageLoad(NormalMode)
     case NumberOfBeneficiariesPage     => _ => routes.DescriptionController.onPageLoad(NormalMode)
     case DescriptionPage               => _ => routes.OtherDescriptionController.onPageLoad(NormalMode)
-    case OtherDescriptionPage          => _ => routes.WhichCountryController.onPageLoad(NormalMode)
-    case WhichCountryPage              => _ => routes.CountryInUKController.onPageLoad(NormalMode)
+    case OtherDescriptionPage          => _ => routes.KnownCountryController.onPageLoad(NormalMode)
+    case KnownCountryPage              => _ => routes.CountryInUKController.onPageLoad(NormalMode)
     case CountryInUKPage               => _ => routes.CountryController.onPageLoad(NormalMode)
     case CountryPage                   => _ => routes.CheckYourAnswersController.onPageLoad()
   }
