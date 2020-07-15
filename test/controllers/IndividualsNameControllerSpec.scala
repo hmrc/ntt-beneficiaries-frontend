@@ -19,7 +19,7 @@ package controllers
 import base.SpecBase
 import forms.IndividualsNameFormProvider
 import matchers.JsonMatchers
-import models.{NormalMode, UserAnswers}
+import models.{Name, NormalMode, UserAnswers}
 import navigation.{FakeNavigator, Navigator}
 import org.mockito.ArgumentCaptor
 import org.mockito.Matchers.any
@@ -77,10 +77,12 @@ class IndividualsNameControllerSpec extends SpecBase with MockitoSugar with Nunj
 
     "must populate the view correctly on a GET when the question has previously been answered" in {
 
+      import models.Name._
+
       when(mockRenderer.render(any(), any())(any()))
         .thenReturn(Future.successful(Html("")))
 
-      val userAnswers = UserAnswers(userAnswersId).set(IndividualsNamePage, "answer").success.value
+      val userAnswers = UserAnswers(userAnswersId).set(IndividualsNamePage, Name("firstName", Some("middleName"), "lastName")).success.value
       val application = applicationBuilder(userAnswers = Some(userAnswers)).build()
       val request = FakeRequest(GET, individualsNameRoute)
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
@@ -92,7 +94,10 @@ class IndividualsNameControllerSpec extends SpecBase with MockitoSugar with Nunj
 
       verify(mockRenderer, times(1)).render(templateCaptor.capture(), jsonCaptor.capture())(any())
 
-      val filledForm = form.bind(Map("value" -> "answer"))
+      val filledForm = form.bind(Map(
+        "firstName" -> "firstName",
+        "middleName" -> "middleName",
+        "lastName" -> "lastName"))
 
       val expectedJson = Json.obj(
         "form" -> filledForm,
@@ -121,7 +126,10 @@ class IndividualsNameControllerSpec extends SpecBase with MockitoSugar with Nunj
 
       val request =
         FakeRequest(POST, individualsNameRoute)
-          .withFormUrlEncodedBody(("value", "answer"))
+          .withFormUrlEncodedBody(
+            ("firstName", "firstName"),
+            ("middleName", "middleName"),
+            ("lastName", "lastName"))
 
       val result = route(application, request).value
 

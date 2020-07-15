@@ -16,6 +16,8 @@
 
 package pages
 
+import models.Name
+import org.scalacheck.{Arbitrary, Gen}
 import pages.behaviours.PageBehaviours
 
 
@@ -23,10 +25,12 @@ class IndividualsNamePageSpec extends PageBehaviours {
 
   "IndividualsNamePage" - {
 
-    beRetrievable[String](IndividualsNamePage)
+    implicit val arb: Arbitrary[Name] = Arbitrary(Gen.const(Name("firstName", Option("middleName"), "lastName")))
 
-    beSettable[String](IndividualsNamePage)
+    beRetrievable[Name](IndividualsNamePage)
 
-    beRemovable[String](IndividualsNamePage)
+    beSettable[Name](IndividualsNamePage)
+
+    beRemovable[Name](IndividualsNamePage)
   }
 }

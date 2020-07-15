@@ -152,6 +152,9 @@ dateOfBirth.error.required = The date of birth must include {0}
 dateOfBirth.error.invalid = Enter a real date of birth
 
 individualsName.title = Individuals Name
+individualsName.firstName = First name
+individualsName.middleName = Middle name
+individualsName.lastName = Last name
 individualsName.heading = Individuals Name
 individualsName.checkYourAnswersLabel = Individuals Name
 individualsName.error.required = Enter the individuals name

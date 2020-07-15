@@ -27,27 +27,51 @@ class IndividualsNameFormProviderSpec extends StringFieldBehaviours {
 
   val form = new IndividualsNameFormProvider()()
 
-  ".value" - {
+  ".firstName" - {
 
-    val fieldName = "value"
+    val field = "firstName"
+    val requiredKey = s"individualsName.${field}.error.required"
 
     behave like fieldThatBindsValidData(
       form,
-      fieldName,
+      field,
       stringsWithMaxLength(maxLength)
-    )
-
-    behave like fieldWithMaxLength(
-      form,
-      fieldName,
-      maxLength = maxLength,
-      lengthError = FormError(fieldName, lengthKey, Seq(maxLength))
     )
 
     behave like mandatoryField(
       form,
-      fieldName,
-      requiredError = FormError(fieldName, requiredKey)
+      field,
+      requiredError = FormError(field, requiredKey)
+    )
+  }
+
+  ".middleName" - {
+
+    val field = "middleName"
+    val requiredKey = s"individualsName.${field}.error.required"
+
+    behave like fieldThatBindsValidData(
+      form,
+      field,
+      stringsWithMaxLength(maxLength)
+    )
+  }
+
+  ".lastName" - {
+
+    val field = "lastName"
+    val requiredKey = s"individualsName.${field}.error.required"
+
+    behave like fieldThatBindsValidData(
+      form,
+      field,
+      stringsWithMaxLength(maxLength)
+    )
+
+    behave like mandatoryField(
+      form,
+      field,
+      requiredError = FormError(field, requiredKey)
     )
   }
 }

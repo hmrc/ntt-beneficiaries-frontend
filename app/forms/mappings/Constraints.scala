@@ -18,6 +18,8 @@ package forms.mappings
 
 import java.time.LocalDate
 
+import play.api.data.FormError
+import play.api.data.format.Formatter
 import play.api.data.validation.{Constraint, Invalid, Valid}
 
 trait Constraints {
@@ -70,6 +72,14 @@ trait Constraints {
         }
     }
 
+  protected def optMaxLength(maximum: Int, errorKey: String): Constraint[Option[String]] =
+    Constraint {
+      case Some(str) if str.length > maximum =>
+        Invalid(errorKey, maximum)
+      case _ =>
+        Valid
+    }
+
   protected def regexp(regex: String, errorKey: String): Constraint[String] =
     Constraint {
       case str if str.matches(regex) =>
@@ -109,4 +119,12 @@ trait Constraints {
       case _ =>
         Invalid(errorKey)
     }
+
+  private[mappings] def optionalStringFormatter: Formatter[Option[String]] = new Formatter[Option[String]] {
+    override def bind(key: String, data: Map[String, String]): Either[Seq[FormError], Option[String]] =
+      Right(data.get(key).filter(_.lengthCompare(0) > 0))
+
+    override def unbind(key: String, value: Option[String]): Map[String, String] =
+      Map(key -> value.getOrElse(""))
+  }
 }
