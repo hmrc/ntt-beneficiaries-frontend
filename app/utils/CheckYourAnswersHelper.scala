@@ -30,9 +30,6 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountryService)(implicit messages: Messages) {
 
-  private def country(code: String): Content =
-    lit"${countryService.getCountryByCode(code).getOrElse("")}"
-
   def knownCountry: Option[Row] = userAnswers.get(KnownCountryPage) map {
     answer =>
       Row(
@@ -332,6 +329,9 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountrySe
         )
       )
   }
+
+  private def country(code: String): Content =
+    lit"${countryService.getCountryByCode(code).getOrElse("")}"
 
   private def yesOrNo(answer: Boolean): Content =
     if (answer) {

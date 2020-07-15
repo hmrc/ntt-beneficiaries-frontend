@@ -35,7 +35,12 @@ object TypeOfBeneficiary extends Enumerable.Implicits {
 
   val values: Seq[TypeOfBeneficiary] = Seq(
     Individual,
-    Unidentified
+    Unidentified,
+    Charity,
+    Trust,
+    Company,
+    LargeNumbers,
+    Other
   )
 
   def radios(form: Form[_])(implicit messages: Messages): Seq[Radios.Item] = {
