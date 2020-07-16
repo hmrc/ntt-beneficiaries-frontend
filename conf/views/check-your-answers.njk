@@ -29,6 +29,8 @@
 
         <form action="{{routes.controllers.CheckYourAnswers.onSubmit.url}}" method="post">
 
+        {{ csrf() | safe }}
+
         {{ govukButton({
           text: messages("site.continue")
         }) }}
