@@ -30,6 +30,21 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountryService)(implicit messages: Messages) {
 
+  def addMore: Option[Row] = userAnswers.get(AddMorePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"addMore.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.AddMoreController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"addMore.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   def knownCountry: Option[Row] = userAnswers.get(KnownCountryPage) map {
     answer =>
       Row(

@@ -281,3 +281,9 @@ knownCountry.error.required = Select yes if knownCountry
 
 interruptInfo.title = interruptInfo
 interruptInfo.heading = interruptInfo
+
+addMore.title = addMore
+addMore.heading = addMore
+addMore.checkYourAnswersLabel = addMore
+addMore.error.required = Enter addMore
+addMore.error.length = AddMore must be 100 characters or less

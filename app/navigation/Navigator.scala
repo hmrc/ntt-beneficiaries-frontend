@@ -48,6 +48,7 @@ class Navigator @Inject()() {
     case KnownCountryPage              => _ => routes.CountryInUKController.onPageLoad(NormalMode)
     case CountryInUKPage               => _ => routes.CountryController.onPageLoad(NormalMode)
     case CountryPage                   => _ => routes.CheckYourAnswersController.onPageLoad()
+    case CheckYourAnswersPage          => _ => routes.AddMoreController.onPageLoad(NormalMode)
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
