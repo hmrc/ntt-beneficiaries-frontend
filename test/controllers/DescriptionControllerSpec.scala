@@ -19,7 +19,7 @@ package controllers
 import base.SpecBase
 import forms.DescriptionFormProvider
 import matchers.JsonMatchers
-import models.{NormalMode, UserAnswers}
+import models.{Description, NormalMode, UserAnswers}
 import navigation.{FakeNavigator, Navigator}
 import org.mockito.ArgumentCaptor
 import org.mockito.Matchers.any
@@ -80,7 +80,7 @@ class DescriptionControllerSpec extends SpecBase with MockitoSugar with Nunjucks
       when(mockRenderer.render(any(), any())(any()))
         .thenReturn(Future.successful(Html("")))
 
-      val userAnswers = UserAnswers(userAnswersId).set(DescriptionPage, "answer").success.value
+      val userAnswers = UserAnswers(userAnswersId).set(DescriptionPage, Description("descriptionOne", Some("descriptionTwo"), Some("descriptionThree"), Some("descriptionFour"), Some("descriptionFive"))).success.value
       val application = applicationBuilder(userAnswers = Some(userAnswers)).build()
       val request = FakeRequest(GET, descriptionRoute)
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
@@ -92,7 +92,12 @@ class DescriptionControllerSpec extends SpecBase with MockitoSugar with Nunjucks
 
       verify(mockRenderer, times(1)).render(templateCaptor.capture(), jsonCaptor.capture())(any())
 
-      val filledForm = form.bind(Map("value" -> "answer"))
+      val filledForm = form.bind(Map(
+        "descriptionOne" -> "descriptionOne",
+        "descriptionTwo" -> "descriptionTwo",
+        "descriptionThree" -> "descriptionThree",
+        "descriptionFour" -> "descriptionFour",
+        "descriptionFive" -> "descriptionFive"))
 
       val expectedJson = Json.obj(
         "form" -> filledForm,
@@ -121,7 +126,12 @@ class DescriptionControllerSpec extends SpecBase with MockitoSugar with Nunjucks
 
       val request =
         FakeRequest(POST, descriptionRoute)
-          .withFormUrlEncodedBody(("value", "answer"))
+          .withFormUrlEncodedBody(
+            ("descriptionOne", "descriptionOne"),
+            ("descriptionTwo", "descriptionTwo"),
+            ("descriptionThree", "descriptionThree"),
+            ("descriptionFour", "descriptionFour"),
+            ("descriptionFive", "descriptionFive"))
 
       val result = route(application, request).value
 

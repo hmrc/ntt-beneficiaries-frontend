@@ -159,6 +159,9 @@ individualsName.heading = Individuals Name
 individualsName.checkYourAnswersLabel = Individuals Name
 individualsName.error.required = Enter the individuals name
 individualsName.error.length = Individuals Name must be 100 characters or less
+individualsName.firstName.error.required = You are required to enter a first name
+individualsName.middleName.error.required = middle name error
+individualsName.lastName.error.required = You are required to enter a first name
 
 knownDateOfBirth.title = Do you know your date of birth
 knownDateOfBirth.heading = Do you know your date of birth
@@ -242,6 +245,16 @@ description.heading = Description
 description.checkYourAnswersLabel = Description
 description.error.required = Enter description
 description.error.length = Description must be 70 characters or less
+description.descriptionOne = Description one
+description.descriptionTwo = Description two
+description.descriptionThree = Description three
+description.descriptionFour = Description four
+description.descriptionFive = Description five
+description.descriptionOne.error.required = error1
+description.descriptionTwo.error.required = error2
+description.descriptionThree.error.required = error3
+description.descriptionFour.error.required = error4
+description.descriptionFive.error.required = error5
 
 otherDescription.title = Other description
 otherDescription.heading = Other description

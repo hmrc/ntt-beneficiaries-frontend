@@ -27,27 +27,69 @@ class DescriptionFormProviderSpec extends StringFieldBehaviours {
 
   val form = new DescriptionFormProvider()()
 
-  ".value" - {
+  ".descriptionOne" - {
 
-    val fieldName = "value"
+    val field = "descriptionOne"
+    val requiredKey = s"description.${field}.error.required"
 
     behave like fieldThatBindsValidData(
       form,
-      fieldName,
+      field,
       stringsWithMaxLength(maxLength)
-    )
-
-    behave like fieldWithMaxLength(
-      form,
-      fieldName,
-      maxLength = maxLength,
-      lengthError = FormError(fieldName, lengthKey, Seq(maxLength))
     )
 
     behave like mandatoryField(
       form,
-      fieldName,
-      requiredError = FormError(fieldName, requiredKey)
+      field,
+      requiredError = FormError(field, requiredKey)
+    )
+  }
+
+  ".descriptionTwo" - {
+
+    val field = "descriptionTwo"
+    val requiredKey = s"description.${field}.error.required"
+
+    behave like fieldThatBindsValidData(
+      form,
+      field,
+      stringsWithMaxLength(maxLength)
+    )
+  }
+
+  ".descriptionThree" - {
+
+    val field = "descriptionThree"
+    val requiredKey = s"description.${field}.error.required"
+
+    behave like fieldThatBindsValidData(
+      form,
+      field,
+      stringsWithMaxLength(maxLength)
+    )
+  }
+
+  ".descriptionFour" - {
+
+    val field = "descriptionFour"
+    val requiredKey = s"description.${field}.error.required"
+
+    behave like fieldThatBindsValidData(
+      form,
+      field,
+      stringsWithMaxLength(maxLength)
+    )
+  }
+
+  ".descriptionFive" - {
+
+    val field = "descriptionFive"
+    val requiredKey = s"description.${field}.error.required"
+
+    behave like fieldThatBindsValidData(
+      form,
+      field,
+      stringsWithMaxLength(maxLength)
     )
   }
 }

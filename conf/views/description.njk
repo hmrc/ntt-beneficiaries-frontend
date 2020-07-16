@@ -20,6 +20,10 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
+      <h1 class="govuk-heading-xl">
+        {{ messages("description.title") }}
+      </h1>
+
         {% if form.errors.length > 0 %}
           {{ govukErrorSummary({
             "titleText": messages("error.summary.title"),
@@ -33,15 +37,64 @@
 
           {{ govukInput({
             label: {
-              text: messages('description.title'),
+              text: messages('description.descriptionOne'),
               isPageHeading: true,
-              classes: "govuk-label--xl"
+              classes: "govuk-label"
             },
-            id: "value",
-            name: "value",
-            value: form.value.value,
-            errorMessage: form.value.error
+            id: "descriptionOne",
+            name: "descriptionOne",
+            value: form.descriptionOne.value,
+            errorMessage: form.descriptionOne.error
           }) }}
+
+          {{ govukInput({
+              label: {
+                text: messages('description.descriptionTwo'),
+                isPageHeading: true,
+                classes: "govuk-label"
+              },
+              id: "descriptionTwo",
+              name: "descriptionTwo",
+              value: form.descriptionTwo.value,
+              errorMessage: form.descriptionTwo.error
+            }) }}
+
+          {{ govukInput({
+              label: {
+                text: messages('description.descriptionThree'),
+                isPageHeading: true,
+                classes: "govuk-label"
+              },
+              id: "descriptionThree",
+              name: "descriptionThree",
+              value: form.descriptionThree.value,
+              errorMessage: form.descriptionThree.error
+            }) }}
+
+          {{ govukInput({
+              label: {
+                text: messages('description.descriptionFour'),
+                isPageHeading: true,
+                classes: "govuk-label"
+              },
+              id: "descriptionFour",
+              name: "descriptionFour",
+              value: form.descriptionFour.value,
+              errorMessage: form.descriptionFour.error
+            }) }}
+
+          {{ govukInput({
+              label: {
+                text: messages('description.descriptionFive'),
+                isPageHeading: true,
+                classes: "govuk-label"
+              },
+              id: "descriptionFive",
+              name: "descriptionFive",
+              value: form.descriptionFive.value,
+              errorMessage: form.descriptionFive.error
+            }) }}
+
 
           {{ govukButton({
             text: messages("site.continue")

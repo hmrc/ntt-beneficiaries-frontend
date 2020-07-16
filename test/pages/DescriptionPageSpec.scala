@@ -16,6 +16,8 @@
 
 package pages
 
+import models.Description
+import org.scalacheck.{Arbitrary, Gen}
 import pages.behaviours.PageBehaviours
 
 
@@ -23,10 +25,12 @@ class DescriptionPageSpec extends PageBehaviours {
 
   "DescriptionPage" - {
 
-    beRetrievable[String](DescriptionPage)
+    implicit val arb: Arbitrary[Description] = Arbitrary(Gen.const(Description("descriptionOne", Option("descriptionTwo"), Option("descriptionThree"), Option("descriptionFour"), Option("descriptionFive"))))
 
-    beSettable[String](DescriptionPage)
+    beRetrievable[Description](DescriptionPage)
 
-    beRemovable[String](DescriptionPage)
+    beSettable[Description](DescriptionPage)
+
+    beRemovable[Description](DescriptionPage)
   }
 }

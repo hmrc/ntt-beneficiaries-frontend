@@ -17,15 +17,22 @@
 package forms
 
 import javax.inject.Inject
-
 import forms.mappings.Mappings
+import models.Description
 import play.api.data.Form
+import play.api.data.Forms._
 
 class DescriptionFormProvider @Inject() extends Mappings {
 
-  def apply(): Form[String] =
+  def apply(): Form[Description] =
     Form(
-      "value" -> text("description.error.required")
-        .verifying(maxLength(70, "description.error.length"))
+      mapping(
+        "descriptionOne" -> text("description.descriptionOne.error.required")
+          .verifying(maxLength(70, "description.descriptionOne.error.required")),
+        "descriptionTwo" -> optionalText().verifying(optMaxLength(70, "description.descriptionTwo.error.required")),
+        "descriptionThree" -> optionalText().verifying(optMaxLength(70, "description.descriptionThree.error.required")),
+        "descriptionFour" -> optionalText().verifying(optMaxLength(70, "description.descriptionFour.error.required")),
+        "descriptionFive" -> optionalText().verifying(optMaxLength(70, "description.descriptionFive.error.required"))
+      )(Description.apply)(Description.unapply)
     )
 }
