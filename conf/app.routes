@@ -117,7 +117,7 @@ POST       /changeKnownCountry                          controllers.KnownCountry
 GET        /interruptInfo                               controllers.InterruptInfoController.onPageLoad(mode: Mode = NormalMode)
 POST       /interruptInfo                               controllers.InterruptInfoController.onSubmit(mode: Mode = NormalMode)
 
-GET        /addMore                        controllers.AddMoreController.onPageLoad(mode: Mode = NormalMode)
-POST       /addMore                        controllers.AddMoreController.onSubmit(mode: Mode = NormalMode)
-GET        /changeAddMore                  controllers.AddMoreController.onPageLoad(mode: Mode = CheckMode)
-POST       /changeAddMore                  controllers.AddMoreController.onSubmit(mode: Mode = CheckMode)
+GET        /addMore                                     controllers.AddMoreController.onPageLoad(mode: Mode = NormalMode)
+POST       /addMore                                     controllers.AddMoreController.onSubmit(mode: Mode = NormalMode)
+GET        /changeAddMore                               controllers.AddMoreController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeAddMore                               controllers.AddMoreController.onSubmit(mode: Mode = CheckMode)
