@@ -19,7 +19,7 @@ package utils
 import java.time.format.DateTimeFormatter
 
 import controllers.routes
-import models.{CheckMode, Name, UserAnswers}
+import models.{CheckMode, Description, Name, UserAnswers}
 import pages._
 import play.api.i18n.Messages
 import CheckYourAnswersHelper._
@@ -90,11 +90,42 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountrySe
       )
   }
 
+  private def descriptionHtml(x: List[Option[String]]): Html = {
+
+    val ifBullet = if (x.size > 1) "<ul class=\"list list-bullet\">"
+
+    def flatList = x.flatten
+
+    if(flatList.length > 1) {
+      Html(
+        ifBullet + flatList.map(value =>
+        "<li>" + value + "</li>"
+        ).mkString("</li>") + "</ul>"
+      )
+    } else {
+      Html(
+        ifBullet + flatList.map(value =>
+        "<p>" + value + "</p>"
+        ).mkString("")
+      )
+    }
+  }
+
+  private def descriptionAsList(desc: Description) = {
+    List(
+      Some(desc.descriptionOne),
+      desc.descriptionTwo,
+      desc.descriptionThree,
+      desc.descriptionFour,
+      desc.descriptionFive
+    )
+  }
+
   def description: Option[Row] = userAnswers.get(DescriptionPage) map {
     answer =>
       Row(
         key     = Key(msg"description.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
-        value   = Value(lit"$answer"),
+        value   = Value(descriptionHtml(descriptionAsList(answer))),
         actions = List(
           Action(
             content            = msg"site.edit",
