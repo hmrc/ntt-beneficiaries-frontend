@@ -19,7 +19,7 @@ package controllers
 import controllers.actions._
 import forms.AddMoreFormProvider
 import javax.inject.Inject
-import models.Mode
+import models.{Mode, AddMore}
 import navigation.Navigator
 import pages.AddMorePage
 import play.api.i18n.{I18nSupport, MessagesApi}
@@ -55,8 +55,9 @@ class AddMoreController @Inject()(
       }
 
       val json = Json.obj(
-        "form" -> preparedForm,
-        "mode" -> mode
+        "form"   -> preparedForm,
+        "mode"   -> mode,
+        "radios"  -> AddMore.radios(preparedForm)
       )
 
       renderer.render("addMore.njk", json).map(Ok(_))
@@ -69,8 +70,9 @@ class AddMoreController @Inject()(
         formWithErrors => {
 
           val json = Json.obj(
-            "form" -> formWithErrors,
-            "mode" -> mode
+            "form"   -> formWithErrors,
+            "mode"   -> mode,
+            "radios" -> AddMore.radios(formWithErrors)
           )
 
           renderer.render("addMore.njk", json).map(BadRequest(_))

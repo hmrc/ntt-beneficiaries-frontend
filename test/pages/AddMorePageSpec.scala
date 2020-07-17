@@ -16,17 +16,17 @@
 
 package pages
 
+import models.AddMore
 import pages.behaviours.PageBehaviours
 
-
-class AddMorePageSpec extends PageBehaviours {
+class AddMoreSpec extends PageBehaviours {
 
   "AddMorePage" - {
 
-    beRetrievable[String](AddMorePage)
+    beRetrievable[AddMore](AddMorePage)
 
-    beSettable[String](AddMorePage)
+    beSettable[AddMore](AddMorePage)
 
-    beRemovable[String](AddMorePage)
+    beRemovable[AddMore](AddMorePage)
   }
 }

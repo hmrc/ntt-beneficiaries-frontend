@@ -14,11 +14,12 @@ echo "POST       /changeAddMore                  controllers.AddMoreController.o
 
 echo "Adding messages to conf.messages"
 echo "" >> ../conf/messages.en
-echo "addMore.title = addMore" >> ../conf/messages.en
-echo "addMore.heading = addMore" >> ../conf/messages.en
-echo "addMore.checkYourAnswersLabel = addMore" >> ../conf/messages.en
-echo "addMore.error.required = Enter addMore" >> ../conf/messages.en
-echo "addMore.error.length = AddMore must be 100 characters or less" >> ../conf/messages.en
+echo "addMore.title = Add a beneficiary" >> ../conf/messages.en
+echo "addMore.heading = Add a beneficiary" >> ../conf/messages.en
+echo "addMore.now = Yes, add them now" >> ../conf/messages.en
+echo "addMore.later = Yes, I want to add them later" >> ../conf/messages.en
+echo "addMore.checkYourAnswersLabel = Add a beneficiary" >> ../conf/messages.en
+echo "addMore.error.required = Select addMore" >> ../conf/messages.en
 
 echo "Adding to UserAnswersEntryGenerators"
 awk '/trait UserAnswersEntryGenerators/ {\
@@ -28,7 +29,7 @@ awk '/trait UserAnswersEntryGenerators/ {\
     print "    Arbitrary {";\
     print "      for {";\
     print "        page  <- arbitrary[AddMorePage.type]";\
-    print "        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))";\
+    print "        value <- arbitrary[AddMore].map(Json.toJson(_))";\
     print "      } yield (page, value)";\
     print "    }";\
     next }1' ../test/generators/UserAnswersEntryGenerators.scala > tmp && mv tmp ../test/generators/UserAnswersEntryGenerators.scala
@@ -40,6 +41,16 @@ awk '/trait PageGenerators/ {\
     print "  implicit lazy val arbitraryAddMorePage: Arbitrary[AddMorePage.type] =";\
     print "    Arbitrary(AddMorePage)";\
     next }1' ../test/generators/PageGenerators.scala > tmp && mv tmp ../test/generators/PageGenerators.scala
+
+echo "Adding to ModelGenerators"
+awk '/trait ModelGenerators/ {\
+    print;\
+    print "";\
+    print "  implicit lazy val arbitraryAddMore: Arbitrary[AddMore] =";\
+    print "    Arbitrary {";\
+    print "      Gen.oneOf(AddMore.values.toSeq)";\
+    print "    }";\
+    next }1' ../test/generators/ModelGenerators.scala > tmp && mv tmp ../test/generators/ModelGenerators.scala
 
 echo "Adding to UserAnswersGenerator"
 awk '/val generators/ {\
@@ -55,7 +66,7 @@ awk '/class CheckYourAnswersHelper/ {\
      print "    answer =>";\
      print "      Row(";\
      print "        key     = Key(msg\"addMore.checkYourAnswersLabel\", classes = Seq(\"govuk-!-width-one-half\")),";\
-     print "        value   = Value(lit\"$answer\"),";\
+     print "        value   = Value(msg\"addMore.$answer\"),";\
      print "        actions = List(";\
      print "          Action(";\
      print "            content            = msg\"site.edit\",";\

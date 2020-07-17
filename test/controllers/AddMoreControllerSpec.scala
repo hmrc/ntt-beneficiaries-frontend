@@ -19,7 +19,7 @@ package controllers
 import base.SpecBase
 import forms.AddMoreFormProvider
 import matchers.JsonMatchers
-import models.{NormalMode, UserAnswers}
+import models.{NormalMode, AddMore, UserAnswers}
 import navigation.{FakeNavigator, Navigator}
 import org.mockito.ArgumentCaptor
 import org.mockito.Matchers.any
@@ -27,7 +27,7 @@ import org.mockito.Mockito.{times, verify, when}
 import org.scalatestplus.mockito.MockitoSugar
 import pages.AddMorePage
 import play.api.inject.bind
-import play.api.libs.json.{JsObject, JsString, Json}
+import play.api.libs.json.{JsObject, Json}
 import play.api.mvc.Call
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
@@ -41,10 +41,10 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
 
   def onwardRoute = Call("GET", "/foo")
 
+  lazy val addMoreRoute = routes.AddMoreController.onPageLoad(NormalMode).url
+
   val formProvider = new AddMoreFormProvider()
   val form = formProvider()
-
-  lazy val addMoreRoute = routes.AddMoreController.onPageLoad(NormalMode).url
 
   "AddMore Controller" - {
 
@@ -65,8 +65,9 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
       verify(mockRenderer, times(1)).render(templateCaptor.capture(), jsonCaptor.capture())(any())
 
       val expectedJson = Json.obj(
-        "form" -> form,
-        "mode" -> NormalMode
+        "form"   -> form,
+        "mode"   -> NormalMode,
+        "radios" -> AddMore.radios(form)
       )
 
       templateCaptor.getValue mustEqual "addMore.njk"
@@ -80,7 +81,7 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
       when(mockRenderer.render(any(), any())(any()))
         .thenReturn(Future.successful(Html("")))
 
-      val userAnswers = UserAnswers(userAnswersId).set(AddMorePage, "answer").success.value
+      val userAnswers = UserAnswers(userAnswersId).set(AddMorePage, AddMore.values.head).success.value
       val application = applicationBuilder(userAnswers = Some(userAnswers)).build()
       val request = FakeRequest(GET, addMoreRoute)
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
@@ -92,11 +93,12 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
 
       verify(mockRenderer, times(1)).render(templateCaptor.capture(), jsonCaptor.capture())(any())
 
-      val filledForm = form.bind(Map("value" -> "answer"))
+      val filledForm = form.bind(Map("value" -> AddMore.values.head.toString))
 
       val expectedJson = Json.obj(
-        "form" -> filledForm,
-        "mode" -> NormalMode
+        "form"   -> filledForm,
+        "mode"   -> NormalMode,
+        "radios" -> AddMore.radios(filledForm)
       )
 
       templateCaptor.getValue mustEqual "addMore.njk"
@@ -121,11 +123,12 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
 
       val request =
         FakeRequest(POST, addMoreRoute)
-          .withFormUrlEncodedBody(("value", "answer"))
+          .withFormUrlEncodedBody(("value", AddMore.values.head.toString))
 
       val result = route(application, request).value
 
       status(result) mustEqual SEE_OTHER
+
       redirectLocation(result).value mustEqual onwardRoute.url
 
       application.stop()
@@ -137,8 +140,8 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
         .thenReturn(Future.successful(Html("")))
 
       val application = applicationBuilder(userAnswers = Some(emptyUserAnswers)).build()
-      val request = FakeRequest(POST, addMoreRoute).withFormUrlEncodedBody(("value", ""))
-      val boundForm = form.bind(Map("value" -> ""))
+      val request = FakeRequest(POST, addMoreRoute).withFormUrlEncodedBody(("value", "invalid value"))
+      val boundForm = form.bind(Map("value" -> "invalid value"))
       val templateCaptor = ArgumentCaptor.forClass(classOf[String])
       val jsonCaptor = ArgumentCaptor.forClass(classOf[JsObject])
 
@@ -149,8 +152,9 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
       verify(mockRenderer, times(1)).render(templateCaptor.capture(), jsonCaptor.capture())(any())
 
       val expectedJson = Json.obj(
-        "form" -> boundForm,
-        "mode" -> NormalMode
+        "form"   -> boundForm,
+        "mode"   -> NormalMode,
+        "radios" -> AddMore.radios(boundForm)
       )
 
       templateCaptor.getValue mustEqual "addMore.njk"
@@ -168,7 +172,6 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
       val result = route(application, request).value
 
       status(result) mustEqual SEE_OTHER
-
       redirectLocation(result).value mustEqual routes.SessionExpiredController.onPageLoad().url
 
       application.stop()
@@ -180,7 +183,7 @@ class AddMoreControllerSpec extends SpecBase with MockitoSugar with NunjucksSupp
 
       val request =
         FakeRequest(POST, addMoreRoute)
-          .withFormUrlEncodedBody(("value", "answer"))
+          .withFormUrlEncodedBody(("value", AddMore.values.head.toString))
 
       val result = route(application, request).value
 

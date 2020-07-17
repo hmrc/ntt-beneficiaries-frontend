@@ -16,32 +16,24 @@
 
 package forms
 
-import forms.behaviours.StringFieldBehaviours
+import forms.behaviours.OptionFieldBehaviours
+import models.AddMore
 import play.api.data.FormError
 
-class AddMoreFormProviderSpec extends StringFieldBehaviours {
-
-  val requiredKey = "addMore.error.required"
-  val lengthKey = "addMore.error.length"
-  val maxLength = 100
+class AddMoreFormProviderSpec extends OptionFieldBehaviours {
 
   val form = new AddMoreFormProvider()()
 
   ".value" - {
 
     val fieldName = "value"
+    val requiredKey = "addMore.error.required"
 
-    behave like fieldThatBindsValidData(
+    behave like optionsField[AddMore](
       form,
       fieldName,
-      stringsWithMaxLength(maxLength)
-    )
-
-    behave like fieldWithMaxLength(
-      form,
-      fieldName,
-      maxLength = maxLength,
-      lengthError = FormError(fieldName, lengthKey, Seq(maxLength))
+      validValues  = AddMore.values,
+      invalidError = FormError(fieldName, "error.invalid")
     )
 
     behave like mandatoryField(

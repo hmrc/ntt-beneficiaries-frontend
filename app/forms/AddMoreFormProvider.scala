@@ -20,12 +20,12 @@ import javax.inject.Inject
 
 import forms.mappings.Mappings
 import play.api.data.Form
+import models.AddMore
 
 class AddMoreFormProvider @Inject() extends Mappings {
 
-  def apply(): Form[String] =
+  def apply(): Form[AddMore] =
     Form(
-      "value" -> text("addMore.error.required")
-        .verifying(maxLength(100, "addMore.error.length"))
+      "value" -> enumerable[AddMore]("addMore.error.required")
     )
 }

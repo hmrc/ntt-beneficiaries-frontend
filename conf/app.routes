@@ -121,3 +121,8 @@ GET        /addMore                                     controllers.AddMoreContr
 POST       /addMore                                     controllers.AddMoreController.onSubmit(mode: Mode = NormalMode)
 GET        /changeAddMore                               controllers.AddMoreController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeAddMore                               controllers.AddMoreController.onSubmit(mode: Mode = CheckMode)
+
+GET        /addMore                        controllers.AddMoreController.onPageLoad(mode: Mode = NormalMode)
+POST       /addMore                        controllers.AddMoreController.onSubmit(mode: Mode = NormalMode)
+GET        /changeAddMore                  controllers.AddMoreController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeAddMore                  controllers.AddMoreController.onSubmit(mode: Mode = CheckMode)

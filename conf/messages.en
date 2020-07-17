@@ -287,3 +287,10 @@ addMore.heading = addMore
 addMore.checkYourAnswersLabel = addMore
 addMore.error.required = Enter addMore
 addMore.error.length = AddMore must be 100 characters or less
+
+addMore.title = Add a beneficiary
+addMore.heading = Add a beneficiary
+addMore.now = Yes, add them now
+addMore.later = Yes, I want to add them later
+addMore.checkYourAnswersLabel = Add a beneficiary
+addMore.error.required = Select addMore
