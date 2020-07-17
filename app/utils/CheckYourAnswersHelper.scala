@@ -92,9 +92,10 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountrySe
 
   private def descriptionHtml(x: List[Option[String]]): Html = {
 
-    val ifBullet = if (x.size > 1) "<ul class=\"list list-bullet\">"
 
     def flatList = x.flatten
+
+    val ifBullet = if (flatList.size == 1) "<ul class=\"list\">" else "<ul class=\"list list-bullet\">"
 
     if(flatList.length > 1) {
       Html(
