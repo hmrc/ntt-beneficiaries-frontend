@@ -129,3 +129,163 @@ compliant.nine.p2.1=The service was built using parts that were tested by the
 compliant.nine.p2.2=Digital Accessibility Centre
 compliant.nine.p2.3=The full service was tested by HMRC and included disabled users.
 compliant.nine.p3=This page was prepared on [date when it was first published]. It was last updated on [date when it was last updated].
+
+typeOfBeneficiary.title = Type of Beneficiary
+typeOfBeneficiary.heading = Type of Beneficiary
+typeOfBeneficiary.individual = Individual
+typeOfBeneficiary.unidentified = Unidentified Class
+typeOfBeneficiary.charity = Charity
+typeOfBeneficiary.trust = Trust
+typeOfBeneficiary.company = Company
+typeOfBeneficiary.largeNumbers = Large Numbers
+typeOfBeneficiary.other = Other
+typeOfBeneficiary.checkYourAnswersLabel = Type of Beneficiary
+typeOfBeneficiary.error.required = Select typeOfBeneficiary
+
+dateOfBirth.title = Date of Birth
+dateOfBirth.heading = Date of Birth
+dateOfBirth.hint = For example, 12 11 2007
+dateOfBirth.checkYourAnswersLabel = Date Of Birth
+dateOfBirth.error.required.all = Enter the date of birth
+dateOfBirth.error.required.two = The date of birth must include {0} and {1}
+dateOfBirth.error.required = The date of birth must include {0}
+dateOfBirth.error.invalid = Enter a real date of birth
+
+individualsName.title = Individuals Name
+individualsName.firstName = First name
+individualsName.middleName = Middle name
+individualsName.lastName = Last name
+individualsName.heading = Individuals Name
+individualsName.checkYourAnswersLabel = Individuals Name
+individualsName.error.required = Enter the individuals name
+individualsName.error.length = Individuals Name must be 100 characters or less
+individualsName.firstName.error.required = You are required to enter a first name
+individualsName.middleName.error.required = middle name error
+individualsName.lastName.error.required = You are required to enter a first name
+
+knownDateOfBirth.title = Do you know your date of birth
+knownDateOfBirth.heading = Do you know your date of birth
+knownDateOfBirth.checkYourAnswersLabel = Do you know your date of birth
+knownDateOfBirth.error.required = Select yes if knownDateOfBirth
+
+countryOfNationality.title = Country of Nationality
+countryOfNationality.heading = Country of Nationality
+countryOfNationality.checkYourAnswersLabel = Country of Nationality
+countryOfNationality.error.required = Enter Country of Nationality
+countryOfNationality.error.length = Country of Nationality must be 100 characters or less
+
+countryOfResidency.title = Country of residency
+countryOfResidency.heading = Country of residency
+countryOfResidency.checkYourAnswersLabel = Country of residency
+countryOfResidency.error.required = Enter Country of residency
+countryOfResidency.error.length = Country of residency must be 100 characters or less
+
+knownCountryOfNationality.title = Known country of nationality
+knownCountryOfNationality.heading = Known country of nationality
+knownCountryOfNationality.checkYourAnswersLabel = Known country of nationality
+knownCountryOfNationality.error.required = Select yes if you know the country of nationality
+
+knownCountryOfResidency.title = Known country of residency
+knownCountryOfResidency.heading = Known country of residency
+knownCountryOfResidency.checkYourAnswersLabel = Known country of residency
+knownCountryOfResidency.error.required = Select yes if you know the country of residency
+
+legallyIncapable.title = Legally Incapable?
+legallyIncapable.heading = Legally Incapable?
+legallyIncapable.checkYourAnswersLabel = Legally Incapable?
+legallyIncapable.error.required = Select yes if legally incapable
+
+charityName.title = Charity name
+charityName.heading = Charity name
+charityName.checkYourAnswersLabel = Charity name
+charityName.error.required = Enter charity name
+charityName.error.length = Charity name must be 100 characters or less
+
+companyName.title = Company name
+companyName.heading = Company name
+companyName.checkYourAnswersLabel = Company name
+companyName.error.required = Enter company name
+companyName.error.length = Company name must be 100 characters or less
+
+largeNumberName.title = Large number name
+largeNumberName.heading = Large number name
+largeNumberName.checkYourAnswersLabel = Large number name
+largeNumberName.error.required = Enter large number name
+largeNumberName.error.length = Large number name must be 100 characters or less
+
+numberOfBeneficiaries.title = Number of Beneficiaries in the class
+numberOfBeneficiaries.heading = Number of Beneficiaries in the class
+numberOfBeneficiaries.oneToOneHundred = 1 to 100
+numberOfBeneficiaries.oneHundredToTwoHundred = 101 to 200
+numberOfBeneficiaries.twoHundredToFiveHundred = 201 to 500
+numberOfBeneficiaries.fiveHundredToOneThousand = 501 to 1000
+numberOfBeneficiaries.overOneThousand = over 1,001
+numberOfBeneficiaries.checkYourAnswersLabel = Number of Beneficiaries in the class
+numberOfBeneficiaries.error.required = Select numberOfBeneficiaries
+
+trustName.title = Trust name
+trustName.heading = Trust name
+trustName.checkYourAnswersLabel = Trust name
+trustName.error.required = Enter the trusts name
+trustName.error.length = Trusts name must be 100 characters or less
+
+unidentifiedDescription.title = Unidentified class description
+unidentifiedDescription.heading = Unidentified class description
+unidentifiedDescription.checkYourAnswersLabel = Unidentified class description
+unidentifiedDescription.error.required = Enter Unidentified class description
+unidentifiedDescription.error.length = Unidentified class description must be 100 characters or less
+
+countryInUK.title = Is the country in the UK?
+countryInUK.heading = Is the country in the UK?
+countryInUK.checkYourAnswersLabel = Is the country in the UK?
+countryInUK.error.required = Select yes if countryInUK
+
+description.title = Description
+description.heading = Description
+description.checkYourAnswersLabel = Description
+description.error.required = Enter description
+description.error.length = Description must be 70 characters or less
+description.descriptionOne = Description one
+description.descriptionTwo = Description two
+description.descriptionThree = Description three
+description.descriptionFour = Description four
+description.descriptionFive = Description five
+description.descriptionOne.error.required = error1
+description.descriptionTwo.error.required = error2
+description.descriptionThree.error.required = error3
+description.descriptionFour.error.required = error4
+description.descriptionFive.error.required = error5
+
+otherDescription.title = Other description
+otherDescription.heading = Other description
+otherDescription.checkYourAnswersLabel = Other description
+otherDescription.error.required = Enter the other description
+otherDescription.error.length = Other description must be 100 characters or less
+
+whichCountry.title = Which country
+whichCountry.heading = Which country
+whichCountry.checkYourAnswersLabel = Which country
+whichCountry.error.required = Enter which country
+whichCountry.error.length = Which country must be 100 characters or less
+
+country.title = country
+country.heading = country
+country.checkYourAnswersLabel = country
+country.error.required = Enter country
+country.error.length = Country must be 100 characters or less
+
+knownCountry.title = knownCountry
+knownCountry.heading = knownCountry
+knownCountry.checkYourAnswersLabel = knownCountry
+knownCountry.error.required = Select yes if knownCountry
+
+interruptInfo.title = interruptInfo
+interruptInfo.heading = interruptInfo
+
+addMore.title = Add a beneficiary
+addMore.heading = Add a beneficiary
+addMore.now = Yes, add them now
+addMore.later = Yes, I want to add them later
+addMore.no = No, I have added all beneficiaries
+addMore.checkYourAnswersLabel = Add a beneficiary
+addMore.error.required = Select addMore

@@ -1,7 +1,5 @@
 # microservice specific routes
 
-GET        /                                            controllers.IndexController.onPageLoad
-
 GET        /assets/*file                                controllers.Assets.versioned(path="/public", file: Asset)
 
 GET        /language/:lang                              controllers.LanguageSwitchController.switchToLanguage(lang: String)
@@ -9,7 +7,122 @@ GET        /language/:lang                              controllers.LanguageSwit
 GET        /this-service-has-been-reset                 controllers.SessionExpiredController.onPageLoad
 
 GET        /check-your-answers                          controllers.CheckYourAnswersController.onPageLoad
+POST       /check-your-answers                          controllers.CheckYourAnswersController.onSubmit
 
 GET        /unauthorised                                controllers.UnauthorisedController.onPageLoad
 
 GET        /accessibility-statement                     controllers.AccessibilityController.onPageLoad
+
+GET        /typeOfBeneficiary                           controllers.TypeOfBeneficiaryController.onPageLoad(mode: Mode = NormalMode)
+POST       /typeOfBeneficiary                           controllers.TypeOfBeneficiaryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeTypeOfBeneficiary                     controllers.TypeOfBeneficiaryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeTypeOfBeneficiary                     controllers.TypeOfBeneficiaryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /dateOfBirth                                 controllers.DateOfBirthController.onPageLoad(mode: Mode = NormalMode)
+POST       /dateOfBirth                                 controllers.DateOfBirthController.onSubmit(mode: Mode = NormalMode)
+GET        /changeDateOfBirth                           controllers.DateOfBirthController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeDateOfBirth                           controllers.DateOfBirthController.onSubmit(mode: Mode = CheckMode)
+
+GET        /individualsName                             controllers.IndividualsNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /individualsName                             controllers.IndividualsNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeIndividualsName                       controllers.IndividualsNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeIndividualsName                       controllers.IndividualsNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownDateOfBirth                            controllers.KnownDateOfBirthController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownDateOfBirth                            controllers.KnownDateOfBirthController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownDateOfBirth                      controllers.KnownDateOfBirthController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownDateOfBirth                      controllers.KnownDateOfBirthController.onSubmit(mode: Mode = CheckMode)
+
+GET        /countryOfNationality                        controllers.CountryOfNationalityController.onPageLoad(mode: Mode = NormalMode)
+POST       /countryOfNationality                        controllers.CountryOfNationalityController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountryOfNationality                  controllers.CountryOfNationalityController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountryOfNationality                  controllers.CountryOfNationalityController.onSubmit(mode: Mode = CheckMode)
+
+GET        /countryOfResidency                          controllers.CountryOfResidencyController.onPageLoad(mode: Mode = NormalMode)
+POST       /countryOfResidency                          controllers.CountryOfResidencyController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountryOfResidency                    controllers.CountryOfResidencyController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountryOfResidency                    controllers.CountryOfResidencyController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownCountryOfNationality                   controllers.KnownCountryOfNationalityController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownCountryOfNationality                   controllers.KnownCountryOfNationalityController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownCountryOfNationality             controllers.KnownCountryOfNationalityController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownCountryOfNationality             controllers.KnownCountryOfNationalityController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownCountryOfResidency                     controllers.KnownCountryOfResidencyController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownCountryOfResidency                     controllers.KnownCountryOfResidencyController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownCountryOfResidency               controllers.KnownCountryOfResidencyController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownCountryOfResidency               controllers.KnownCountryOfResidencyController.onSubmit(mode: Mode = CheckMode)
+
+GET        /legallyIncapable                            controllers.LegallyIncapableController.onPageLoad(mode: Mode = NormalMode)
+POST       /legallyIncapable                            controllers.LegallyIncapableController.onSubmit(mode: Mode = NormalMode)
+GET        /changeLegallyIncapable                      controllers.LegallyIncapableController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeLegallyIncapable                      controllers.LegallyIncapableController.onSubmit(mode: Mode = CheckMode)
+
+GET        /charityName                                 controllers.CharityNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /charityName                                 controllers.CharityNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCharityName                           controllers.CharityNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCharityName                           controllers.CharityNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /companyName                                 controllers.CompanyNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /companyName                                 controllers.CompanyNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCompanyName                           controllers.CompanyNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCompanyName                           controllers.CompanyNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /largeNumberName                             controllers.LargeNumberNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /largeNumberName                             controllers.LargeNumberNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeLargeNumberName                       controllers.LargeNumberNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeLargeNumberName                       controllers.LargeNumberNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /numberOfBeneficiaries                       controllers.NumberOfBeneficiariesController.onPageLoad(mode: Mode = NormalMode)
+POST       /numberOfBeneficiaries                       controllers.NumberOfBeneficiariesController.onSubmit(mode: Mode = NormalMode)
+GET        /changeNumberOfBeneficiaries                 controllers.NumberOfBeneficiariesController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeNumberOfBeneficiaries                 controllers.NumberOfBeneficiariesController.onSubmit(mode: Mode = CheckMode)
+
+GET        /trustName                                   controllers.TrustNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /trustName                                   controllers.TrustNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeTrustName                             controllers.TrustNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeTrustName                             controllers.TrustNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /unidentifiedDescription                     controllers.UnidentifiedDescriptionController.onPageLoad(mode: Mode = NormalMode)
+POST       /unidentifiedDescription                     controllers.UnidentifiedDescriptionController.onSubmit(mode: Mode = NormalMode)
+GET        /changeUnidentifiedDescription               controllers.UnidentifiedDescriptionController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeUnidentifiedDescription               controllers.UnidentifiedDescriptionController.onSubmit(mode: Mode = CheckMode)
+
+GET        /countryInUK                                 controllers.CountryInUKController.onPageLoad(mode: Mode = NormalMode)
+POST       /countryInUK                                 controllers.CountryInUKController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountryInUK                           controllers.CountryInUKController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountryInUK                           controllers.CountryInUKController.onSubmit(mode: Mode = CheckMode)
+
+GET        /description                                 controllers.DescriptionController.onPageLoad(mode: Mode = NormalMode)
+POST       /description                                 controllers.DescriptionController.onSubmit(mode: Mode = NormalMode)
+GET        /changeDescription                           controllers.DescriptionController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeDescription                           controllers.DescriptionController.onSubmit(mode: Mode = CheckMode)
+
+GET        /otherDescription                            controllers.OtherDescriptionController.onPageLoad(mode: Mode = NormalMode)
+POST       /otherDescription                            controllers.OtherDescriptionController.onSubmit(mode: Mode = NormalMode)
+GET        /changeOtherDescription                      controllers.OtherDescriptionController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeOtherDescription                      controllers.OtherDescriptionController.onSubmit(mode: Mode = CheckMode)
+
+
+GET        /country                                     controllers.CountryController.onPageLoad(mode: Mode = NormalMode)
+POST       /country                                     controllers.CountryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeCountry                               controllers.CountryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeCountry                               controllers.CountryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knownCountry                                controllers.KnownCountryController.onPageLoad(mode: Mode = NormalMode)
+POST       /knownCountry                                controllers.KnownCountryController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnownCountry                          controllers.KnownCountryController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnownCountry                          controllers.KnownCountryController.onSubmit(mode: Mode = CheckMode)
+
+GET        /interruptInfo                               controllers.InterruptInfoController.onPageLoad(mode: Mode = NormalMode)
+POST       /interruptInfo                               controllers.InterruptInfoController.onSubmit(mode: Mode = NormalMode)
+
+GET        /addMore                                     controllers.AddMoreController.onPageLoad(mode: Mode = NormalMode)
+POST       /addMore                                     controllers.AddMoreController.onSubmit(mode: Mode = NormalMode)
+GET        /changeAddMore                               controllers.AddMoreController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeAddMore                               controllers.AddMoreController.onSubmit(mode: Mode = CheckMode)
+
+GET        /addMore                        controllers.AddMoreController.onPageLoad(mode: Mode = NormalMode)
+POST       /addMore                        controllers.AddMoreController.onSubmit(mode: Mode = NormalMode)
+GET        /changeAddMore                  controllers.AddMoreController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeAddMore                  controllers.AddMoreController.onSubmit(mode: Mode = CheckMode)

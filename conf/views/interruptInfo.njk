@@ -1,5 +1,5 @@
 {% extends "includes/layout.njk" %}
-
+{% from "govuk/components/button/macro.njk"        import govukButton %}
 {% from "macros/title.njk"                         import title %}
 
 {% block pageTitle %}
@@ -13,11 +13,20 @@
       <div class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-xl">
-          {{ messages("index.heading") }}
+          {{ messages("interruptInfo.heading") }}
         </h1>
+
+        <form action="{{routes.controllers.InterruptInfoController.onSubmit.url}}" method="post">
+
+        {{ csrf() | safe }}
+
+        {{ govukButton({
+            text: messages("site.continue")
+            }) }}
+
+        </form>
 
       </div>
     </div>
   </div>
-
 {% endblock %}
