@@ -90,6 +90,38 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers, countryService: CountrySe
       )
   }
 
+  private def descriptionHtml(x: List[Option[String]]): Html = {
+
+
+    def flatList = x.flatten
+
+    val ifBullet = if (flatList.size == 1) "<ul class=\"list\">" else "<ul class=\"list list-bullet\">"
+
+    if(flatList.length > 1) {
+      Html(
+        ifBullet + flatList.map(value =>
+        "<li>" + value + "</li>"
+        ).mkString("</li>") + "</ul>"
+      )
+    } else {
+      Html(
+        ifBullet + flatList.map(value =>
+        "<p>" + value + "</p>"
+        ).mkString("")
+      )
+    }
+  }
+
+  private def descriptionAsList(desc: Description) = {
+    List(
+      Some(desc.descriptionOne),
+      desc.descriptionTwo,
+      desc.descriptionThree,
+      desc.descriptionFour,
+      desc.descriptionFive
+    )
+  }
+
   def description: Option[Row] = userAnswers.get(DescriptionPage) map {
     answer =>
       Row(
